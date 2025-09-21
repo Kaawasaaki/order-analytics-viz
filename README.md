@@ -97,6 +97,9 @@ npm run dev   # or python app.py / flask run
 cd ../frontend
 npm start
 
+Frontend → http://localhost:3000
+Backend → http://localhost:5000
+
 ```
 
 
