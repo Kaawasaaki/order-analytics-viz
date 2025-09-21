@@ -33,7 +33,7 @@ export const ProductChart = () => {
                   boxShadow: 'var(--shadow-card)'
                 }}
                 formatter={(value: number, name: string, props: any) => [
-                  `${value}% ($${props.payload.sales.toLocaleString()})`,
+                  `${value}% (₹${(props.payload.sales / 100000).toFixed(1)}L)`,
                   'Share'
                 ]}
               />

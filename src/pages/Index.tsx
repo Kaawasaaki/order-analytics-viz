@@ -21,7 +21,7 @@ const Index = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           <KPICard
             title="Total Sales"
-            value={`$${kpiData.totalSales.toLocaleString()}`}
+            value={`₹${(kpiData.totalSales / 100000).toFixed(1)}L`}
             change={`+${kpiData.salesGrowth}%`}
             trend="up"
             icon={DollarSign}
@@ -43,7 +43,7 @@ const Index = () => {
           />
           <KPICard
             title="Avg Order Value"
-            value={`$${kpiData.averageOrderValue.toFixed(2)}`}
+            value={`₹${(kpiData.averageOrderValue / 1000).toFixed(1)}k`}
             change="+2.1%"
             trend="up"
             icon={TrendingUp}

@@ -25,7 +25,7 @@ export const TopCustomersTable = () => {
                 <TableCell className="text-muted-foreground">{customer.country}</TableCell>
                 <TableCell className="text-right text-foreground">{customer.totalOrders}</TableCell>
                 <TableCell className="text-right font-medium text-foreground">
-                  ${customer.totalSales.toLocaleString()}
+                  ₹{(customer.totalSales / 100000).toFixed(1)}L
                 </TableCell>
               </TableRow>
             ))}

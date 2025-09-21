@@ -24,7 +24,7 @@ export const CountryChart = () => {
               <YAxis 
                 stroke="hsl(var(--muted-foreground))"
                 fontSize={12}
-                tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+                tickFormatter={(value) => `₹${(value / 100000).toFixed(0)}L`}
               />
               <Tooltip 
                 contentStyle={{
@@ -34,7 +34,7 @@ export const CountryChart = () => {
                   boxShadow: 'var(--shadow-card)'
                 }}
                 formatter={(value: number, name: string) => [
-                  name === 'sales' ? `$${value.toLocaleString()}` : value,
+                  name === 'sales' ? `₹${value.toLocaleString()}` : value,
                   name === 'sales' ? 'Sales' : 'Orders'
                 ]}
               />
