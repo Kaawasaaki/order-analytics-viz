@@ -1,7 +1,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/52d8d383-7a0f-4669-9aae-fbddfed0fd2c
+![Live Demo of App]([https://raw.githubusercontent.com/Kaawasaaki/SNN/master/csnn_streamlit_demo.gif](https://github.com/Kaawasaaki/order-analytics-viz/blob/main/sales_dashboard.gif))
 
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
