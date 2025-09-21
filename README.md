@@ -1,8 +1,7 @@
 
 ## Project info
 
-![Live Demo of App]([https://raw.githubusercontent.com/Kaawasaaki/SNN/master/csnn_streamlit_demo.gif](https://github.com/Kaawasaaki/order-analytics-viz/blob/main/sales_dashboard.gif))
-
+![Live Demo of App](https://github.com/Kaawasaaki/order-analytics-viz/blob/main/sales_dashboard.gif)
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
