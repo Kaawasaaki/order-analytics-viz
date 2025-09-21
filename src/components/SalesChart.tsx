@@ -1,8 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { salesOverTime } from "@/data/mockData";
 
-export const SalesChart = () => {
+interface SalesChartProps {
+  data?: any[];
+}
+
+export const SalesChart = ({ data }: SalesChartProps) => {
+  // Fallback to empty array if no data provided
+  const chartData = data || [];
+
   return (
     <Card className="bg-gradient-card shadow-card">
       <CardHeader>
@@ -11,7 +17,7 @@ export const SalesChart = () => {
       <CardContent>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={salesOverTime}>
+            <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
               <XAxis 
                 dataKey="month" 

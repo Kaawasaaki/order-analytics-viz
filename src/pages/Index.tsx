@@ -4,10 +4,51 @@ import { ProductChart } from "@/components/ProductChart";
 import { CountryChart } from "@/components/CountryChart";
 import { OrderStatusChart } from "@/components/OrderStatusChart";
 import { TopCustomersTable } from "@/components/TopCustomersTable";
-import { kpiData } from "@/data/mockData";
+import { useDashboardData } from "@/hooks/useDashboardData";
 import { DollarSign, ShoppingCart, Users, TrendingUp, Package, BarChart3 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
+  const { 
+    salesOverTime, 
+    countryData, 
+    productLineData, 
+    topCustomers, 
+    kpiData, 
+    orderStatusData, 
+    loading, 
+    error 
+  } = useDashboardData();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="bg-gradient-card shadow-card p-8">
+          <CardContent>
+            <div className="text-center space-y-4">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+              <p className="text-muted-foreground">Loading dashboard data...</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="bg-gradient-card shadow-card p-8">
+          <CardContent>
+            <div className="text-center space-y-4">
+              <p className="text-red-500">{error}</p>
+              <p className="text-muted-foreground">Using fallback data for demonstration</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 space-y-8">
@@ -62,17 +103,17 @@ const Index = () => {
 
         {/* Main Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <SalesChart />
-          <ProductChart />
+          <SalesChart data={salesOverTime} />
+          <ProductChart data={productLineData} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <CountryChart />
-          <OrderStatusChart />
+          <CountryChart data={countryData} />
+          <OrderStatusChart data={orderStatusData} />
         </div>
 
         {/* Top Customers Table */}
-        <TopCustomersTable />
+        <TopCustomersTable data={topCustomers} />
       </div>
     </div>
   );

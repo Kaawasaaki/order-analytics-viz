@@ -1,8 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { orderStatusData } from "@/data/mockData";
 
-export const OrderStatusChart = () => {
+interface OrderStatusChartProps {
+  data?: any[];
+}
+
+export const OrderStatusChart = ({ data }: OrderStatusChartProps) => {
+  // Fallback to empty array if no data provided  
+  const chartData = data || [];
+
   return (
     <Card className="bg-gradient-card shadow-card">
       <CardHeader>
@@ -13,7 +19,7 @@ export const OrderStatusChart = () => {
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
-                data={orderStatusData}
+                data={chartData}
                 cx="50%"
                 cy="50%"
                 outerRadius={120}
@@ -21,7 +27,7 @@ export const OrderStatusChart = () => {
                 label={({ name, value }) => `${name}: ${value}%`}
                 labelLine={false}
               >
-                {orderStatusData.map((entry, index) => (
+                {chartData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>

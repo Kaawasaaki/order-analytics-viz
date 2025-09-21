@@ -1,8 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { countryData } from "@/data/mockData";
 
-export const CountryChart = () => {
+interface CountryChartProps {
+  data?: any[];
+}
+
+export const CountryChart = ({ data }: CountryChartProps) => {
+  // Fallback to empty array if no data provided
+  const chartData = data || [];
+
   return (
     <Card className="bg-gradient-card shadow-card">
       <CardHeader>
@@ -11,7 +17,7 @@ export const CountryChart = () => {
       <CardContent>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={countryData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
               <XAxis 
                 dataKey="country" 

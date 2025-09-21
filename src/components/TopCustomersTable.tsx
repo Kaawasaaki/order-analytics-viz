@@ -1,8 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { topCustomers } from "@/data/mockData";
 
-export const TopCustomersTable = () => {
+interface TopCustomersTableProps {
+  data?: any[];
+}
+
+export const TopCustomersTable = ({ data }: TopCustomersTableProps) => {
+  // Fallback to empty array if no data provided
+  const customers = data || [];
+
   return (
     <Card className="bg-gradient-card shadow-card">
       <CardHeader>
@@ -19,7 +25,7 @@ export const TopCustomersTable = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {topCustomers.map((customer, index) => (
+            {customers.map((customer, index) => (
               <TableRow key={index} className="border-border hover:bg-muted/50">
                 <TableCell className="font-medium text-foreground">{customer.name}</TableCell>
                 <TableCell className="text-muted-foreground">{customer.country}</TableCell>
